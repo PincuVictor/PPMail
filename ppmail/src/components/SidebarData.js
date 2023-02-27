@@ -5,8 +5,15 @@ import * as RiIcons from 'react-icons/ri'
 
 export const SidebarData = [
     {
+        title: 'Compose',
+        path: '/compose',
+        icon:<AiIcons.AiOutlinePlus />,
+        cName: 'nav-text'
+    },
+
+    {
         title: 'Inbox',
-        path: '/',
+        path: '/inbox',
         icon:<FaIcons.FaInbox />,
         cName: 'nav-text'
     },
