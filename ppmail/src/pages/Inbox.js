@@ -1,11 +1,15 @@
 import React from 'react'
+import { Container } from 'react-bootstrap'
 import Sidebar from '../components/Sidebar'
+import '../components/Inbox.css'
 
 function Inbox() {
   return (
     <>
         <Sidebar />
-        <div>Inbox</div>
+        <Container className='mail'>
+          alo
+        </Container>
     </>
   )
 }

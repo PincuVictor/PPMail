@@ -1,9 +1,7 @@
 import React, { useRef, useState } from 'react'
-import { auth } from '../firebase'
-import { createUserWithEmailAndPassword } from 'firebase/auth'
 import { Button, Form, Card, Alert } from 'react-bootstrap'
 import * as IoIcons from 'react-icons/io5'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { AuthProvider, useAuth } from '../contexts/AuthContext'
 
 function Signup() {
@@ -12,6 +10,8 @@ function Signup() {
   const passConfirmRef = useRef('')
   const { signup } = useAuth()
   const [error, setError] = useState('')
+  const [loading, setLoading] = useState(false)
+  const navigate = useNavigate()
 
   async function handleSubmit(e) {
     e.preventDefault()
@@ -22,10 +22,14 @@ function Signup() {
 
     try {
       setError('')
+      setLoading(true)
       await signup(emailRef.current.value, passRef.current.value)
+      navigate('/Inbox')
     } catch {
       setError('Failed to create an account')
     }
+
+    setLoading(false)
   }
 
   return (
@@ -51,7 +55,7 @@ function Signup() {
                 <Form.Label>Password Confirmation</Form.Label>
                 <Form.Control type='password' ref={passConfirmRef} required />
               </Form.Group>
-              <Button className='w-100' type='submit'>Sign Up</Button>
+              <Button disabled = {loading} className='w-100' type='submit'>Sign Up</Button>
             </Form>
           </Card.Body>
       </Card>

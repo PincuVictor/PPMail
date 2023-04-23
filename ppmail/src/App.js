@@ -7,17 +7,20 @@ import Inbox from './pages/Inbox'
 import { Container } from 'react-bootstrap';
 import Signup from './pages/Signup';
 import { AuthProvider } from './contexts/AuthContext';
+import Profile from './pages/Profile';
 
 function App() {
   return (
     <> 
     <Routes>
         <Route path='/' element={
-          <Container className='d-flex align-items-center justify-content-center' style={{minHeight: '100vh', maxWidth:'100vw'}}>
-          <div className='w-100' style={{maxWidth: '400px'}}>
-            <Login />
-          </div>
-        </Container>
+          <AuthProvider>
+            <Container className='d-flex align-items-center justify-content-center' style={{minHeight: '100vh', maxWidth:'100vw'}}>
+              <div className='w-100' style={{maxWidth: '400px'}}>
+                <Login />
+              </div>
+            </Container>
+          </AuthProvider>
         } />
         <Route path='/signup' element={
           <AuthProvider>
@@ -29,6 +32,7 @@ function App() {
           </AuthProvider>
         } />
       <Route path='/inbox' element={<Inbox />}/>
+      <Route path='/profile' element={<Profile />}/>
     </Routes>  
     
      

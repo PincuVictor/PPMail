@@ -1,0 +1,11 @@
+.mail{
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: flex;
+    height: 40px;
+    margin-top: 2px;
+    outline-style: solid;
+    outline-width: 1px;
+    outline-color: black;
+}
