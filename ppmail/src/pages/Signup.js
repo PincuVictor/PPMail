@@ -60,7 +60,7 @@ function Signup() {
           </Card.Body>
       </Card>
       <div className='text-center'>
-        Already have an account? <Link to='/'>Login</Link>
+        Already have an account? <Link to='/login'>Login</Link>
       </div>
     </AuthProvider>
     </>

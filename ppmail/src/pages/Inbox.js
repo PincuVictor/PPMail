@@ -1,14 +1,18 @@
 import React from 'react'
 import { Container } from 'react-bootstrap'
-import Sidebar from '../components/Sidebar'
 import '../components/Inbox.css'
+import Sidebar from "../components/sidebar"
+import { useAuth } from '../contexts/AuthContext'
 
 function Inbox() {
+
+
+
   return (
     <>
         <Sidebar />
         <Container className='mail'>
-          alo
+          
         </Container>
     </>
   )
