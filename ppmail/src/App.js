@@ -9,6 +9,7 @@ import Signup from './pages/Signup';
 import { AuthProvider } from './contexts/AuthContext';
 import Profile from './pages/Profile';
 import PrivateRoute from './components/PrivateRoute';
+import Compose from './pages/Compose';
 
 function App() {
   return (
@@ -39,6 +40,18 @@ function App() {
               <Container className='d-flex align-items-center justify-content-center' style={{minHeight: '100vh'  , maxWidth:'100vw'}}>
                 <div className='w-100' style={{maxWidth: '400px'}}>
                   <Profile />
+                </div>
+              </Container>          
+            </PrivateRoute>
+          </AuthProvider>
+        } />
+        <Route path='/compose' element={
+          <AuthProvider>          
+            <PrivateRoute>
+              <Sidebar />
+              <Container className='d-flex align-items-center justify-content-center' style={{minHeight: '90vh'  , maxWidth:'100vw'}}>
+                <div className='w-100' style={{maxWidth: '800px'}}>
+                  <Compose />
                 </div>
               </Container>          
             </PrivateRoute>
