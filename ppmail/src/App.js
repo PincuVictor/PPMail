@@ -47,7 +47,7 @@ function App() {
       <Route path='/inbox' element={
         <AuthProvider>
           <PrivateRoute>
-            <Inbox />
+              <Inbox />
           </PrivateRoute>
         </AuthProvider>
 

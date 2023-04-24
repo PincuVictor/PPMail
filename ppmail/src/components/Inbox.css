@@ -2,10 +2,19 @@
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
-    width: flex;
     height: 40px;
     margin-top: 2px;
-    outline-style: solid;
-    outline-width: 1px;
-    outline-color: black;
+    border: black;
+    border-width: 2px;
+    border-style: solid;
+    border-radius: 4px;
+    padding: 6px 0px 16px 0px;
+}
+
+.text{
+    display: block;
+    width: 70vw;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }

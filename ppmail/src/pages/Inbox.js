@@ -12,7 +12,8 @@ function Inbox() {
     <>
         <Sidebar />
         <Container className='mail'>
-          
+          <strong className='d-flex align-items-center justify-content-center'>Pula</strong>
+          <span className='text'>         Buba ziua, miau</span>
         </Container>
     </>
   )
