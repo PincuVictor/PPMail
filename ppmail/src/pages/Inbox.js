@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import { Button, Container } from 'react-bootstrap'
 import '../components/Inbox.css'
 import Sidebar from "../components/sidebar"
@@ -10,29 +10,36 @@ function Inbox() {
 
   const {currentUser} = useAuth()
   const q = query(collection(db, 'mails'), where('recipient', '==', currentUser.email))
-
-  async function emails(e) {
-    e.preventDefault()
+  var documente = []
+  
+  async function emails() {
 
       try {
         const querySnapshot = await getDocs(q)
         querySnapshot.forEach((doc) => {
-          
+          documente = [...documente, doc.data().title]     
         })
-        
+
       }
       catch {
-          console.log('nu vrea')
+        console.log('nu vrea')
       }
-  }
-
-
-  return (
+      return (
+        <>
+          {documente.forEach((elem) => {
+            console.log(elem)
+          })}
+        </>
+      )
+    }
+  useEffect(() => {emails()}, [])
+    
+    return (
     <>
     <AuthProvider>
         <Sidebar />
         <ul>
-          <Button onClick={emails} />
+            <li></li>
         </ul>      
         
     </AuthProvider>
