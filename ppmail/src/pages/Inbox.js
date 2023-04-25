@@ -5,43 +5,41 @@ import Sidebar from "../components/sidebar"
 import { collection, query, where, getDocs, setDoc, doc } from 'firebase/firestore'
 import { db } from '../firebase'
 import { AuthProvider, useAuth } from '../contexts/AuthContext'
+import { Link } from 'react-router-dom'
 
 function Inbox() {
 
   const {currentUser} = useAuth()
   const q = query(collection(db, 'mails'), where('recipient', '==', currentUser.email))
-  var documente = []
+  const documente = useState([])
   
   async function emails() {
 
       try {
         const querySnapshot = await getDocs(q)
         querySnapshot.forEach((doc) => {
-          documente = [...documente, doc.data().title]     
+          documente.push({
+            id: doc.id,
+            title: doc.data().title,
+            sender: doc.data().sender
+          })
+          console.log(documente.title)
         })
 
       }
       catch {
-        console.log('nu vrea')
+        console.log('no work')
       }
-      return (
-        <>
-          {documente.forEach((elem) => {
-            console.log(elem)
-          })}
-        </>
-      )
+
     }
+
   useEffect(() => {emails()}, [])
     
     return (
     <>
     <AuthProvider>
         <Sidebar />
-        <ul>
-            <li></li>
-        </ul>      
-        
+        {console.log(documente)}
     </AuthProvider>
     </>
   )
