@@ -3,6 +3,7 @@ import { Button, Card, Alert, Form } from 'react-bootstrap'
 import { db } from '../firebase'
 import { Timestamp, collection, doc, setDoc } from 'firebase/firestore'
 import { AuthProvider, useAuth } from '../contexts/AuthContext'
+import Sidebar from '../components/sidebar'
 
 function Compose() {
 
