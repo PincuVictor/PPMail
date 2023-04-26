@@ -1,13 +1,13 @@
 import React, {useEffect, useState} from 'react'
 import '../components/Inbox.css'
 import Sidebar from "../components/sidebar"
-import { collection, query, where, getDocs, setDoc, doc } from 'firebase/firestore'
+import { collection, query, where, getDocs, setDoc, doc, orderBy } from 'firebase/firestore'
 import { db } from '../firebase'
 import { AuthProvider, useAuth } from '../contexts/AuthContext'
 import { Container } from 'react-bootstrap'
 
 function Inbox() {
-  const [spliced, setSpliced] = useState(false)
+
   const {currentUser} = useAuth()
   const q = query(collection(db, 'mails'), where('recipient', '==', currentUser.email))
   const documente = useState([{id: 'asdasdasd',
@@ -41,7 +41,7 @@ function Inbox() {
       setDocumentePerm(documente)
     }
 
-    useEffect(() => {emails()}, [documente]) 
+    useEffect(() => {emails()}, [])
 
   if (loaded) {
     return (
@@ -50,13 +50,14 @@ function Inbox() {
         <Sidebar />
         <ul className='mails'>
           {documentePerm.map((mail, index) => {
-            return (
-            <li key={index} className='mail'>
-              <Container className='mail-container'>
-               <span className='mail-text'> <strong className='mail-title'> {mail.title} </strong><span>         </span> {mail.text}</span>
-              </Container>
-            </li>
-            )
+            if(index > 1 && index < documentePerm.length / 2 + 1)
+              return (
+                <li key={index} className='mail'>
+                  <Container className='mail-container'>
+                  <span className='mail-text'> <strong className='mail-title'> {mail.title} </strong><span>         </span> {mail.text}</span>
+                  </Container>
+                </li>
+              )
         })}
         </ul>
     </AuthProvider>
