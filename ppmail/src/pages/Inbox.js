@@ -11,35 +11,43 @@ function Inbox() {
 
   const {currentUser} = useAuth()
   const q = query(collection(db, 'mails'), where('recipient', '==', currentUser.email))
-  const documente = useState([])
+  const documente = useState([{id: 'asdasdasd',
+    title: 'biribagu',
+    sender: 'pincu.victor@ppmail.com',
+    recipient: 'pincu.victor@ppmail.com',
+    createdAt: 'pula',
+    text: 'e'
+  }])
+  
+  const [documentePerm, setDocumentePerm] = useState([{id: '',
+    title: '',
+    sender: '',
+    recipient: '',
+    createdAt: '',
+    text: ''
+  }])
   
   async function emails() {
 
       try {
         const querySnapshot = await getDocs(q)
         querySnapshot.forEach((doc) => {
-          documente.push({
-            id: doc.id,
-            title: doc.data().title,
-            sender: doc.data().sender
-          })
-          console.log(documente.title)
+          documente.push(doc.data())
         })
-
       }
       catch {
         console.log('no work')
       }
-
+      setDocumentePerm(documente)
     }
 
   useEffect(() => {emails()}, [])
-    
+    console.log(documentePerm[2].text)
     return (
     <>
     <AuthProvider>
         <Sidebar />
-        {console.log(documente)}
+        <div>{}</div>
     </AuthProvider>
     </>
   )
