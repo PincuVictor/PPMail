@@ -10,6 +10,7 @@ import { AuthProvider } from './contexts/AuthContext';
 import Profile from './pages/Profile';
 import PrivateRoute from './components/PrivateRoute';
 import Compose from './pages/Compose';
+import IndividualEmail from './pages/IndividualEmail';
 
 function App() {
   return (
@@ -63,7 +64,18 @@ function App() {
               <Inbox />
           </PrivateRoute>
         </AuthProvider>
-
+      } />
+      <Route path='/inbox/*' element={
+        <AuthProvider>
+          <PrivateRoute>
+            <Sidebar />
+            <Container className='d-flex align-items-center justify-content-center' style={{minHeight: '90vh'  , maxWidth:'100vw'}}>
+              <div className='w-100' style={{maxWidth: '800px'}}>
+                <IndividualEmail />
+              </div>
+            </Container>          
+          </PrivateRoute>
+        </AuthProvider>
       } />
     </Routes>  
     
