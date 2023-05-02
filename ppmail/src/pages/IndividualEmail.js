@@ -26,10 +26,11 @@ function IndividualEmail() {
 if(loaded)
   return (
     <>
-        <h2></h2>
+        <h2>{mailPerm.title}</h2>
         <Card style={{outlineStyle:'solid', outlineColor:'black'}}>
             <Card.Body>
-
+                <span>From: {mailPerm.sender}</span>
+                <span className='mt-2'>{mailPerm.text}</span>
             </Card.Body>
         </Card>
     </>
