@@ -11,6 +11,7 @@ import Profile from './pages/Profile';
 import PrivateRoute from './components/PrivateRoute';
 import Compose from './pages/Compose';
 import IndividualEmail from './pages/IndividualEmail';
+import Sent from './pages/Sent';
 
 function App() {
   return (
@@ -62,6 +63,13 @@ function App() {
         <AuthProvider>
           <PrivateRoute>
               <Inbox />
+          </PrivateRoute>
+        </AuthProvider>
+      } />
+      <Route path='/sent' element={
+        <AuthProvider>
+          <PrivateRoute>
+              <Sent />
           </PrivateRoute>
         </AuthProvider>
       } />
