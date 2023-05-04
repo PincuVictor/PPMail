@@ -6,6 +6,10 @@
     margin-right: auto;
 }
 
+.mail:hover{
+    background-color: gray;
+}
+
 .mail{
     height: 40px;
     margin-top: 2px;

@@ -23,14 +23,14 @@ function Profile() {
   return (
     <>
     <AuthProvider>
-    <Card>
+    <Card style={{marginBottom:'4px', background:'inherit', boxShadow:'0 0 1rem 0 rgba(0, 0, 0, .2)'}}>
         <Card.Body>
             <h2 className='text-center mb-4'>Profile</h2>
             {error && <Alert variant='danger'>{error}</Alert>}
             <strong>Email - </strong>{currentUser && currentUser.email}
         </Card.Body>
     </Card>
-    <div className='w-100 text-center mt-2'>
+    <div style={{position:'absolute', marginLeft:'22vh', marginTop:'2px'}}>
         <Button variant='link' onClick={handleLogout}>Log Out</Button>
     </div>
     </AuthProvider>

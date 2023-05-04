@@ -12,6 +12,7 @@ import PrivateRoute from './components/PrivateRoute';
 import Compose from './pages/Compose';
 import IndividualEmail from './pages/IndividualEmail';
 import Sent from './pages/Sent';
+import './components/Background.css'
 
 function App() {
   return (
@@ -19,31 +20,67 @@ function App() {
     <Routes>
         <Route path='/login' element={
           <AuthProvider>
-            <Container className='d-flex align-items-center justify-content-center' style={{minHeight: '100vh', maxWidth:'100vw'}}>
-              <div className='w-100' style={{maxWidth: '400px'}}>
-                <Login />
-              </div>
+            <Container className='background' style={{minHeight:'100%', minWidth:'100%'}}>
+              <ul className='circles'>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+              </ul>
+              <Container className='d-flex align-items-center justify-content-center' style={{minHeight: '100vh', maxWidth:'100vw'}}>
+                <div className='w-100' style={{maxWidth: '400px'}}>
+                  <Login />
+                </div>
+              </Container>
             </Container>
           </AuthProvider>
         } />
         <Route path='/signup' element={
           <AuthProvider>
-            <Container className='d-flex align-items-center justify-content-center' style={{minHeight: '100vh'  , maxWidth:'100vw'}}>
-              <div className='w-100' style={{maxWidth: '400px'}}>
-                <Signup />
-              </div>
+            <Container className='background' style={{minHeight:'100%', minWidth:'100%'}}>
+              <ul className='circles'>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+              </ul>
+              <Container className='d-flex align-items-center justify-content-center' style={{minHeight: '100vh'  , maxWidth:'100vw'}}>
+                <div className='w-100' style={{maxWidth: '400px'}}>
+                  <Signup />
+                </div>
+              </Container>
             </Container>
           </AuthProvider>
         } />
         <Route path='/profile' element={
           <AuthProvider>          
             <PrivateRoute>
-              <Sidebar />
-              <Container className='d-flex align-items-center justify-content-center' style={{minHeight: '100vh'  , maxWidth:'100vw'}}>
-                <div className='w-100' style={{maxWidth: '400px'}}>
+              <Sidebar/>
+              <Container className='background' style={{maxHeight:'auto', minWidth:'100%', overflow:'hidden'}}>
+              <ul className='circles'>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+              </ul>
+              <Container className='d-flex align-items-center justify-content-center' style={{maxHeight: '100vh'  , maxWidth:'100vw'}}>
+                <div className='w-100' style={{maxWidth: '400px', marginTop:'30vh'}}>
                   <Profile />
                 </div>
-              </Container>          
+              </Container>
+              </Container>       
             </PrivateRoute>
           </AuthProvider>
         } />
