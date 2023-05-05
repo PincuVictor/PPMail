@@ -50,8 +50,8 @@ function Login() {
             </Form>
           </Card.Body>
       </Card>
-      <div style={{marginLeft:'6vw', marginRight:'10vw', position:'absolute'}}>
-        Don't have an accout? <Link to='/signup' style={{color:'darkblue'}}>Sign Up</Link>
+      <div style={{display:'flex', justifyContent:'center'}}>
+        Don't have an accout? <Link to='/signup' style={{color:'#171e80', zIndex:'5'}}>Sign Up</Link>
       </div>
     </AuthProvider>
     </>

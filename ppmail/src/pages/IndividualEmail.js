@@ -59,7 +59,7 @@ if(loaded) {
                             <Card.Body className='body'>
                                 <span>To: {mailPerm.recipient}</span>
                                 {<span>Sent At: {date.toString()}</span>}
-                                <span className='mt-2'>{mailPerm.text}</span>
+                                <span style={{marginTop:'5px'}}>{mailPerm.text}</span>
                             </Card.Body>
                         </Card>
                     </AuthProvider>

@@ -30,8 +30,8 @@ function Profile() {
             <strong>Email - </strong>{currentUser && currentUser.email}
         </Card.Body>
     </Card>
-    <div style={{position:'absolute', marginLeft:'22vh', marginTop:'2px'}}>
-        <Button variant='link' style={{color: '#171e80'}} onClick={handleLogout}>Log Out</Button>
+    <div style={{display:'flex', justifyContent:'center'}}>
+        <Button variant='link' style={{color: '#171e80', zIndex:'5'}} onClick={handleLogout}>Log Out</Button>
     </div>
     </AuthProvider>
     </>

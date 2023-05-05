@@ -4,12 +4,14 @@ import Sidebar from "../components/sidebar"
 import { collection, query, where, getDocs, setDoc, doc, orderBy } from 'firebase/firestore'
 import { db } from '../firebase'
 import { AuthProvider, useAuth } from '../contexts/AuthContext'
-import { Container } from 'react-bootstrap'
+import { Button, Container } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 
 function Inbox() {
 
   const {currentUser} = useAuth()
+  var pages = 1
+  const [currPage, setCurrPage] = useState(1)
   
   const documente = useState([{id: '',
     title: '',
@@ -51,13 +53,15 @@ function Inbox() {
 
     useEffect(() => {emails()}, [])
   if (loaded) {
+    pages = ( documentePerm.length / 2 - 1 ) / 20
+    pages = Math.ceil(pages)
     return (
     <>
     <AuthProvider>
         <Sidebar />
         <ul className='mails'>
           {documentePerm.map((mail, index) => {
-            if(index > 1 && index < documentePerm.length / 2 + 1)
+            if((index > 1 && index > ( currPage - 1 ) * 20) && (index <= currPage * 20 && index < documentePerm.length / 2 + 1))
               return (
                 <li key={index} className='mail'>
                   <Link to={'/inbox/' + mail.id} style={{color:'#000', textDecoration:'none'}}>
@@ -69,6 +73,19 @@ function Inbox() {
               )
         })}
         </ul>
+        <Container style={{display:'flex', justifyContent:'flex-end', alignItems:'flex-end'}}>
+          <Button onClick={() => {
+            if(currPage > 1) {
+              setCurrPage(currPage - 1)              
+            }
+          }}/>
+          <span>Page {currPage} of {pages}</span>
+          <Button onClick={() => {
+            if(currPage < pages) {
+              setCurrPage(currPage + 1)
+            }
+          }}/>
+        </Container>
     </AuthProvider>
     </>
   )

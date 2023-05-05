@@ -26,7 +26,7 @@ function Sent() {
       createdAt: '',
       text: ''
     }])
-    const q = query(collection(db, 'mails'), where('sender', '==', currentUser.email))
+    const q = query(collection(db, 'mails'), where('sender', '==', currentUser.email), orderBy('createdAt', 'desc'))
     async function emails() {
   
         try {

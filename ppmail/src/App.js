@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css'
-import { Link, Route, Routes } from 'react-router-dom';
+import { Link, Navigate, Route, Routes } from 'react-router-dom';
 import Sidebar from './components/sidebar';
 import Login from './pages/Login';
 import Inbox from './pages/Inbox'
@@ -18,6 +18,9 @@ function App() {
   return (
     <> 
     <Routes>
+        <Route path='/' element={
+          <Navigate to='/inbox'/>
+        } />
         <Route path='/login' element={
           <AuthProvider>
             <Container className='background' style={{minHeight:'100%', minWidth:'100%'}}>
@@ -64,7 +67,7 @@ function App() {
           <AuthProvider>          
             <PrivateRoute>
               <Sidebar/>
-              <Container className='background' style={{maxHeight:'auto', minWidth:'100%', overflow:'hidden', position:'fixed'}}>
+              <Container className='background' style={{maxHeight:'100%', minWidth:'100%', overflow:'hidden', position:'fixed'}}>
               <ul className='circles'>
                 <li></li>
                 <li></li>
@@ -111,6 +114,25 @@ function App() {
       <Route path='/inbox' element={
         <AuthProvider>
           <PrivateRoute>
+            <Container className='background' style={{maxHeight:'auto', minWidth:'100%', overflow:'hidden', position:'fixed'}}>
+              <ul className='circles'>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+              </ul>
+            </Container>
+            <Inbox />
+          </PrivateRoute>
+        </AuthProvider>
+      } />
+      <Route path='/sent' element={
+        <AuthProvider>
+          <PrivateRoute>
           <Container className='background' style={{maxHeight:'auto', minWidth:'100%', overflow:'hidden', position:'fixed'}}>
               <ul className='circles'>
                 <li></li>
@@ -122,12 +144,50 @@ function App() {
                 <li></li>
                 <li></li>
               </ul>
-              </Container>
-              <Inbox />
+            </Container>
+              <Sent />
           </PrivateRoute>
         </AuthProvider>
       } />
-      <Route path='/sent' element={
+      <Route path='/favourites' element={
+        <AuthProvider>
+          <PrivateRoute>
+          <Container className='background' style={{maxHeight:'auto', minWidth:'100%', overflow:'hidden', position:'fixed'}}>
+              <ul className='circles'>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+              </ul>
+            </Container>
+              <Sent />
+          </PrivateRoute>
+        </AuthProvider>
+      } />
+      <Route path='/trash' element={
+        <AuthProvider>
+          <PrivateRoute>
+          <Container className='background' style={{maxHeight:'auto', minWidth:'100%', overflow:'hidden', position:'fixed'}}>
+              <ul className='circles'>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+              </ul>
+            </Container>
+              <Sent />
+          </PrivateRoute>
+        </AuthProvider>
+      } />
+      <Route path='/drafts' element={
         <AuthProvider>
           <PrivateRoute>
           <Container className='background' style={{maxHeight:'auto', minWidth:'100%', overflow:'hidden', position:'fixed'}}>

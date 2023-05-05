@@ -59,8 +59,8 @@ function Signup() {
             </Form>
           </Card.Body>
       </Card>
-      <div style={{marginLeft:'6vw', marginRight:'10vw', position:'absolute'}}>
-        Already have an account? <Link to='/login' style={{color:'darkblue'}}>Login</Link>
+      <div style={{display:'flex', justifyContent:'center'}}>
+        Already have an account? <Link to='/login' style={{color:'#171e80', zIndex:'5'}}>Login</Link>
       </div>
     </AuthProvider>
     </>
