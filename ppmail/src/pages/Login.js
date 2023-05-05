@@ -46,7 +46,7 @@ function Login() {
                 <Form.Label>Password</Form.Label>
                 <Form.Control type='password' ref={passRef} required style={{background:'transparent', borderColor:'black'}}/>
               </Form.Group>
-              <Button disabled = {loading} className='w-100' type='submit' style={{ }}>Login</Button>
+              <Button disabled = {loading} className='w-100' type='submit' style={{backgroundcolor: '#171e80t'}}>Login</Button>
             </Form>
           </Card.Body>
       </Card>

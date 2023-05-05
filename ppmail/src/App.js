@@ -64,7 +64,7 @@ function App() {
           <AuthProvider>          
             <PrivateRoute>
               <Sidebar/>
-              <Container className='background' style={{maxHeight:'auto', minWidth:'100%', overflow:'hidden'}}>
+              <Container className='background' style={{maxHeight:'auto', minWidth:'100%', overflow:'hidden', position:'fixed'}}>
               <ul className='circles'>
                 <li></li>
                 <li></li>
@@ -88,17 +88,41 @@ function App() {
           <AuthProvider>          
             <PrivateRoute>
               <Sidebar />
+              <Container className='background' style={{maxHeight:'auto', minWidth:'100%', overflow:'hidden', position:'fixed'}}>
+              <ul className='circles'>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+              </ul>
               <Container className='d-flex align-items-center justify-content-center' style={{minHeight: '90vh'  , maxWidth:'100vw'}}>
                 <div className='w-100' style={{maxWidth: '800px'}}>
                   <Compose />
                 </div>
-              </Container>          
+              </Container>  
+              </Container>        
             </PrivateRoute>
           </AuthProvider>
         } />
       <Route path='/inbox' element={
         <AuthProvider>
           <PrivateRoute>
+          <Container className='background' style={{maxHeight:'auto', minWidth:'100%', overflow:'hidden', position:'fixed'}}>
+              <ul className='circles'>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+              </ul>
+              </Container>
               <Inbox />
           </PrivateRoute>
         </AuthProvider>
@@ -106,6 +130,18 @@ function App() {
       <Route path='/sent' element={
         <AuthProvider>
           <PrivateRoute>
+          <Container className='background' style={{maxHeight:'auto', minWidth:'100%', overflow:'hidden', position:'fixed'}}>
+              <ul className='circles'>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+              </ul>
+            </Container>
               <Sent />
           </PrivateRoute>
         </AuthProvider>
@@ -114,6 +150,18 @@ function App() {
         <AuthProvider>
           <PrivateRoute>
             <Sidebar />
+            <Container className='background' style={{maxHeight:'auto', minWidth:'100%', overflow:'hidden', position:'fixed'}}>
+              <ul className='circles'>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+              </ul>
+            </Container>
             <Container className='d-flex align-items-center justify-content-center' style={{minHeight: '90vh'  , maxWidth:'100vw'}}>
               <div className='w-100' style={{maxWidth: '800px'}}>
                 <IndividualEmail />

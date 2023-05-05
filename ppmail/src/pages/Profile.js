@@ -31,7 +31,7 @@ function Profile() {
         </Card.Body>
     </Card>
     <div style={{position:'absolute', marginLeft:'22vh', marginTop:'2px'}}>
-        <Button variant='link' onClick={handleLogout}>Log Out</Button>
+        <Button variant='link' style={{color: '#171e80'}} onClick={handleLogout}>Log Out</Button>
     </div>
     </AuthProvider>
     </>

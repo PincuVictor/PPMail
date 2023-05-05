@@ -39,22 +39,23 @@ function Compose() {
     <>
     <AuthProvider>
         <h2>Compose</h2>
-        <Card>
+        <Card style={{marginBottom:'4px', background:'inherit', boxShadow:'0 0 1rem 0 rgba(0, 0, 0, .2)'}}>
+            
             <Card.Body>
                 {error && <Alert variant='danger'>{error}</Alert>}
                 {success && <Alert variant='success'>{success}</Alert>}
                 <Form onSubmit={handleSubmit}>
                     <Form.Group id='email' className='mb-4'>
                         <Form.Label>To:</Form.Label>
-                        <Form.Control type='email' ref={emailRef} required className='w-50' placeholder='The recipient'/>
+                        <Form.Control type='email' ref={emailRef} required className='w-50' style={{background:'transparent', borderColor:'black'}} placeholder='The recipient'/>
                     </Form.Group>
                     <Form.Group id='title' className='mb-4'>
                         <Form.Label>Title:</Form.Label>
-                        <Form.Control type='text' ref={titleRef} required className='w-50' placeholder='Subject'/>
+                        <Form.Control type='text' ref={titleRef} required className='w-50' style={{background:'transparent', borderColor:'black'}} placeholder='Subject'/>
                     </Form.Group>
                     <Form.Group id='body'>
                         <Form.Label>Text:</Form.Label>  
-                        <Form.Control as='textarea' ref={textRef} rows='15' required/>
+                        <Form.Control as='textarea' ref={textRef} rows='10' required style={{background:'transparent', borderColor:'black'}}    />
                     </Form.Group>
                     <Button type='submit' className='w-40 mt-4' style={{float:'right'}}>Send</Button>
                 </Form>

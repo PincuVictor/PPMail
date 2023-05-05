@@ -39,7 +39,7 @@ if(loaded) {
             <>
             <AuthProvider>
                 <h2>{mailPerm.title}</h2>
-                <Card className='container'>
+                <Card className='container' style={{marginBottom:'4px', background:'inherit', boxShadow:'0 0 1rem 0 rgba(0, 0, 0, .2)'}}>
                     <Card.Body className='body'>
                         <span>From: {mailPerm.sender}</span>
                         {<span>Sent At: {date.toString()}</span>}
