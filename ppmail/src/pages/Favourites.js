@@ -7,10 +7,11 @@ import { AuthProvider, useAuth } from '../contexts/AuthContext'
 import { Button, Container } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 
-function Inbox() {
+function Favourites() {
 
   const {currentUser} = useAuth()
   var pages = 1
+  var favouriteMails = 0
   const [currPage, setCurrPage] = useState(1)
   
   const documente = useState([{id: '',
@@ -38,6 +39,9 @@ function Inbox() {
       try {
         const querySnapshot = await getDocs(q)
         querySnapshot.forEach((doc) => {
+            if(doc.data().favourite === true)
+                favouriteMails++
+    
           documente.push({
             id: doc.id,
             title: doc.data().title,
@@ -59,7 +63,10 @@ function Inbox() {
 
     useEffect(() => {emails()}, [])
   if (loaded) {
-    pages = ( documentePerm.length / 2 - 1 ) / 20
+    if(favouriteMails > 19)
+        pages = ( favouriteMails / 2 - 1) / 20
+    else
+        pages = 1
     pages = Math.ceil(pages)
     return (
     <>
@@ -67,7 +74,7 @@ function Inbox() {
         <Sidebar />
         <ul className='mails'>
           {documentePerm.map((mail, index) => {
-            if( ( (index > 1 && index > ( currPage - 1 ) * 20) && (index <= currPage * 20 && index < documentePerm.length / 2 + 1) ) && mail.trash == false)
+            if( ( (index > 1 && index > ( currPage - 1 ) * 20) && (index <= currPage * 20 && index < documentePerm.length / 2 + 1) ) && mail.favourite === true)
               return (
                 <li key={index} className='mail'>
                   <Link to={'/inbox/' + mail.id} style={{color:'#000', textDecoration:'none'}}>
@@ -107,4 +114,4 @@ function Inbox() {
 
 }
 
-export default Inbox
+export default Favourites

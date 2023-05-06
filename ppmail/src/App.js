@@ -13,6 +13,8 @@ import Compose from './pages/Compose';
 import IndividualEmail from './pages/IndividualEmail';
 import Sent from './pages/Sent';
 import './components/Background.css'
+import Trash from './pages/Trash';
+import Favourites from './pages/Favourites';
 
 function App() {
   return (
@@ -164,7 +166,7 @@ function App() {
                 <li></li>
               </ul>
             </Container>
-              <Sent />
+              <Favourites />
           </PrivateRoute>
         </AuthProvider>
       } />
@@ -183,26 +185,7 @@ function App() {
                 <li></li>
               </ul>
             </Container>
-              <Sent />
-          </PrivateRoute>
-        </AuthProvider>
-      } />
-      <Route path='/drafts' element={
-        <AuthProvider>
-          <PrivateRoute>
-          <Container className='background' style={{maxHeight:'auto', minWidth:'100%', overflow:'hidden', position:'fixed'}}>
-              <ul className='circles'>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-              </ul>
-            </Container>
-              <Sent />
+              <Trash />
           </PrivateRoute>
         </AuthProvider>
       } />

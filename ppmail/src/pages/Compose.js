@@ -3,7 +3,6 @@ import { Button, Card, Alert, Form } from 'react-bootstrap'
 import { db } from '../firebase'
 import { Timestamp, collection, doc, setDoc } from 'firebase/firestore'
 import { AuthProvider, useAuth } from '../contexts/AuthContext'
-import Sidebar from '../components/sidebar'
 
 function Compose() {
 
@@ -26,7 +25,9 @@ function Compose() {
                 recipient: emailRef.current.value,
                 title: titleRef.current.value,
                 text: textRef.current.value,
-                createdAt: Timestamp.fromDate(new Date())
+                createdAt: Timestamp.fromDate(new Date()),
+                trash: false,
+                favourite: false
             })
         }
          catch {

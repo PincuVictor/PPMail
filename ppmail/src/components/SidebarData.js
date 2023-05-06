@@ -34,13 +34,6 @@ export const SidebarData = [
     },
     
     {
-        title: 'Drafts',
-        path: '/drafts',
-        icon:<RiIcons.RiDraftLine />,
-        cName: 'nav-text'
-    },
-    
-    {
         title: 'Trash Bin',
         path: '/trash',
         icon:<FaIcons.FaTrashAlt />,

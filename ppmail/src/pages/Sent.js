@@ -16,7 +16,9 @@ function Sent() {
       sender: '',
       recipient: '',
       createdAt: '',
-      text: ''
+      text: '',
+      trash: '',
+      favourite: ''
     }])
     const [loaded, setLoaded] = useState(false)
     const [documentePerm, setDocumentePerm] = useState([{id: '',
@@ -24,7 +26,9 @@ function Sent() {
       sender: '',
       recipient: '',
       createdAt: '',
-      text: ''
+      text: '',
+      trash: '',
+      favourite: ''
     }])
     const q = query(collection(db, 'mails'), where('sender', '==', currentUser.email), orderBy('createdAt', 'desc'))
     async function emails() {
@@ -38,7 +42,9 @@ function Sent() {
               sender: doc.data().sender,
               recipient: doc.data().recipient,
               createdAt: doc.data().createdAt,
-              text: doc.data().text
+              text: doc.data().text,
+              trash: doc.data().trash,
+              favourite: doc.data().favourite
             })
           })
           setLoaded(true)
