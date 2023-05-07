@@ -41,7 +41,6 @@ function Compose() {
     <AuthProvider>
         <h2>Compose</h2>
         <Card style={{marginBottom:'4px', background:'inherit', boxShadow:'0 0 1rem 0 rgba(0, 0, 0, .2)'}}>
-            
             <Card.Body>
                 {error && <Alert variant='danger'>{error}</Alert>}
                 {success && <Alert variant='success'>{success}</Alert>}

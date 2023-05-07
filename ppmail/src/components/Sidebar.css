@@ -4,7 +4,7 @@
     display:flex;
     justify-content: start;
     align-items: center;
-    z-index: 4;
+    z-index: 1;
 }
 
 .menu-bars{

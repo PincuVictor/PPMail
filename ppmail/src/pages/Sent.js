@@ -6,11 +6,15 @@ import { db } from '../firebase'
 import { AuthProvider, useAuth } from '../contexts/AuthContext'
 import { Container } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
+import { IconButton } from '@mui/material'
+import { AiOutlineLeft, AiOutlineRight } from 'react-icons/ai'
 
 function Sent() {
   
     const {currentUser} = useAuth()
-  
+    var pages = 1
+    const [currPage, setCurrPage] = useState(1)
+
     const documente = useState([{id: '',
       title: '',
       sender: '',
@@ -57,9 +61,12 @@ function Sent() {
   
       useEffect(() => {emails()}, [])
     if (loaded) {
+      pages = ( documentePerm.length / 2 - 1 ) / 20
+      pages = Math.ceil(pages)
       return (
       <>
       <AuthProvider>
+          <strong style={{display:'flex', justifyContent:'center', alignItems:'center', color:'#FFF', fontSize:'32px', zIndex:5, marginTop:13, marginBottom:-63}}>Sent</strong>
           <Sidebar />
           <ul className='mails'>
             {documentePerm.map((mail, index) => {
@@ -75,6 +82,19 @@ function Sent() {
                 )
           })}
           </ul>
+          <Container style={{display:'flex', justifyContent:'flex-end', alignItems:'center'}}>
+            <IconButton onClick={() => {
+              if(currPage > 1) {
+                setCurrPage(currPage - 1)              
+              }
+            }} > <AiOutlineLeft /> </IconButton>
+            <span style={{padding:'5 5 5 5'}}>Page {currPage} of {pages}</span>
+            <IconButton onClick={() => {
+              if(currPage < pages) {
+                setCurrPage(currPage + 1)
+              }
+            }} style={{marginLeft:'1rem'}}> <AiOutlineRight /> </IconButton>
+          </Container>
       </AuthProvider>
       </>
     )

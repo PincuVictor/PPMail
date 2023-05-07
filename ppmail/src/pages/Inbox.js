@@ -6,6 +6,8 @@ import { db } from '../firebase'
 import { AuthProvider, useAuth } from '../contexts/AuthContext'
 import { Button, Container } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
+import { IconButton } from '@mui/material'
+import { AiOutlineLeft, AiOutlineRight } from 'react-icons/ai'
 
 function Inbox() {
 
@@ -64,6 +66,7 @@ function Inbox() {
     return (
     <>
     <AuthProvider>
+        <strong style={{display:'flex', justifyContent:'center', alignItems:'center', color:'#FFF', fontSize:'32px', zIndex:5, marginTop:13, marginBottom:-63}}>Inbox</strong>
         <Sidebar />
         <ul className='mails'>
           {documentePerm.map((mail, index) => {
@@ -79,18 +82,18 @@ function Inbox() {
               )
         })}
         </ul>
-        <Container style={{display:'flex', justifyContent:'flex-end', alignItems:'flex-end'}}>
-          <Button onClick={() => {
+        <Container style={{display:'flex', justifyContent:'flex-end', alignItems:'center'}}>
+          <IconButton onClick={() => {
             if(currPage > 1) {
               setCurrPage(currPage - 1)              
             }
-          }}/>
-          <span>Page {currPage} of {pages}</span>
-          <Button onClick={() => {
+          }} > <AiOutlineLeft /> </IconButton>
+          <span style={{padding:'5 5 5 5'}}>Page {currPage} of {pages}</span>
+          <IconButton onClick={() => {
             if(currPage < pages) {
               setCurrPage(currPage + 1)
             }
-          }}/>
+          }} style={{marginLeft:'1rem'}}> <AiOutlineRight /> </IconButton>
         </Container>
     </AuthProvider>
     </>
