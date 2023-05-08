@@ -13,8 +13,10 @@ function Sent() {
   
     const {currentUser} = useAuth()
     var pages = 1
+    const [loads, setLoads] = useState(0)
+    const [render, setRender] = useState(false)
     const [currPage, setCurrPage] = useState(1)
-
+    
     const documente = useState([{id: '',
       title: '',
       sender: '',
@@ -51,7 +53,10 @@ function Sent() {
               favourite: doc.data().favourite
             })
           })
-          setLoaded(true)
+          setLoads(loads + 1)
+          if(loads === 1)
+            setLoaded(true)
+          setRender(true)
         }
         catch(error) {
           console.log(error)
@@ -59,9 +64,9 @@ function Sent() {
         setDocumentePerm(documente)
       }
   
-      useEffect(() => {emails()}, [])
+      useEffect(() => {emails()}, [render])
     if (loaded) {
-      pages = ( documentePerm.length / 2 - 1 ) / 20
+      pages = ( documentePerm.length - 2 ) / 20
       pages = Math.ceil(pages)
       return (
       <>
@@ -70,7 +75,7 @@ function Sent() {
           <Sidebar />
           <ul className='mails'>
             {documentePerm.map((mail, index) => {
-              if(index > 1 && index < documentePerm.length / 2 + 1)
+              if(index > 1 && index < documentePerm.length)
                 return (
                   <li key={index} className='mail'>
                     <Link to={'/inbox/' + mail.id} style={{color:'#000', textDecoration:'none'}}>
@@ -88,7 +93,7 @@ function Sent() {
                 setCurrPage(currPage - 1)              
               }
             }} > <AiOutlineLeft /> </IconButton>
-            <span style={{padding:'5 5 5 5'}}>Page {currPage} of {pages}</span>
+            <span>Page {currPage} of {pages}</span>
             <IconButton onClick={() => {
               if(currPage < pages) {
                 setCurrPage(currPage + 1)

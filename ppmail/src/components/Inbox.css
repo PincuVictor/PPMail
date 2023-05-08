@@ -7,7 +7,7 @@
 }
 
 .mail:hover{
-    background-color: #171e80;
+    background-color: #434bb1;
 }
 
 .mail{
@@ -29,7 +29,7 @@
 }
 
 .mail-title{
-    max-width: 30vw;
+    max-width: 20vw;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;

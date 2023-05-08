@@ -6,9 +6,9 @@ import { SidebarData } from './SidebarData'
 import './Sidebar.css'
 
 function Sidebar() {
-    const [sidebar, setSidebar] = useState(false);
+    const [sidebar, setSidebar] = useState(false)
 
-    const showSidebar = () => setSidebar(!sidebar);
+    const showSidebar = () => setSidebar(!sidebar)
 
   return (
     <>

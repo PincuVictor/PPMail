@@ -13,9 +13,10 @@ function Trash() {
 
   const {currentUser} = useAuth()
   var pages = 1
-  var trashMails = 0
   const [currPage, setCurrPage] = useState(1)
-  
+  const [loads, setLoads] = useState(0)
+  const [render, setRender] = useState(false)
+
   const documente = useState([{id: '',
     title: '',
     sender: '',
@@ -35,15 +36,12 @@ function Trash() {
     trash: '',
     favourite: ''
   }])
-  const q = query(collection(db, 'mails'), where('recipient', '==', currentUser.email), orderBy('createdAt', 'desc'))
+  const q = query(collection(db, 'mails'), where('recipient', '==', currentUser.email), where('trash', '==', true), orderBy('createdAt', 'desc'))
   async function emails() {
 
       try {
         const querySnapshot = await getDocs(q)
         querySnapshot.forEach((doc) => {
-            if(doc.data().trash === true)
-                trashMails++
-    
           documente.push({
             id: doc.id,
             title: doc.data().title,
@@ -55,7 +53,10 @@ function Trash() {
             favourite: doc.data().favourite
           })
         })
-        setLoaded(true)
+        setLoads(loads + 1)
+        if(loads === 1)
+          setLoaded(true)
+        setRender(true)
       }
       catch(error) {
         console.log(error)
@@ -63,12 +64,9 @@ function Trash() {
       setDocumentePerm(documente)
     }
 
-    useEffect(() => {emails()}, [])
+    useEffect(() => {emails()}, [render])
   if (loaded) {
-    if(trashMails > 19)
-        pages = ( trashMails / 2 - 1) / 20
-    else
-        pages = 1
+    pages = ( documentePerm.length - 2 ) / 20
     pages = Math.ceil(pages)
     return (
     <>
@@ -77,7 +75,7 @@ function Trash() {
         <Sidebar />
         <ul className='mails'>
           {documentePerm.map((mail, index) => {
-            if( ( (index > 1 && index > ( currPage - 1 ) * 20) && (index <= currPage * 20 && index < documentePerm.length / 2 + 1) ) && mail.trash === true)
+            if((index > 1 && index > ( currPage - 1 ) * 20) && (index <= currPage * 20 && index < documentePerm.length))
               return (
                 <li key={index} className='mail'>
                   <Link to={'/inbox/' + mail.id} style={{color:'#000', textDecoration:'none'}}>
@@ -95,7 +93,7 @@ function Trash() {
               setCurrPage(currPage - 1)              
             }
           }} > <AiOutlineLeft /> </IconButton>
-          <span style={{padding:'5 5 5 5'}}>Page {currPage} of {pages}</span>
+          <span>Page {currPage} of {pages}</span>
           <IconButton onClick={() => {
             if(currPage < pages) {
               setCurrPage(currPage + 1)
