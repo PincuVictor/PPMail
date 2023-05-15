@@ -102,7 +102,7 @@ function Inbox() {
 
   if (loaded) {
     
-    pages = ( documentePerm.length - 2) / 20
+    pages = ( documentePerm.length - 2) / 15
     pages = Math.ceil(pages)
 
     return (
@@ -136,7 +136,7 @@ function Inbox() {
 
         <ul className='mails'>
           {documentePerm.map((mail, index) => {
-            if( ( (index > 1 && index > ( currPage - 1 ) * 20) && (index <= currPage * 20 && index < documentePerm.length) ) && mail.trash === false)
+            if( ( (index > 1 && index > ( currPage - 1 ) * 15) && (index <= currPage * 15 && index < documentePerm.length) ) && mail.trash === false)
               return (
                 <li key={index} className='mail'>
                   <Container style={{display:'flex', justifyContent:'center'}}>
