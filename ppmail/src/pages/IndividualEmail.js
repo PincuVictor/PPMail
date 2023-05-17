@@ -10,7 +10,6 @@ function IndividualEmail() {
     const mailRef = doc(db, 'mails', window.location.href.slice(-20))
     const [mailPerm, setMailPerm] = useState()
     const [loaded, setLoaded] = useState(false)
-    console.log(currentUser)
 
     async function fetchMail() {
         try {
@@ -68,7 +67,7 @@ if(loaded) {
                 else
                 return (
                     <>
-                        <Alert variant='danger'>You don't have permissions to view this email!</Alert>
+                        <Alert variant='danger'>You don't have the permissions to view this email!</Alert>
                     </>
                 )
 }

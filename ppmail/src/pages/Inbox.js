@@ -6,7 +6,7 @@ import { db } from '../firebase'
 import { AuthProvider, useAuth } from '../contexts/AuthContext'
 import { Button, Card, Container } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
-import { Checkbox, IconButton } from '@mui/material'
+import { IconButton } from '@mui/material'
 import { AiFillStar, AiOutlineLeft, AiOutlineRight, AiOutlineStar } from 'react-icons/ai'
 import { FaTrash } from 'react-icons/fa'
 
@@ -112,7 +112,7 @@ function Inbox() {
         <Sidebar />
         
         {component.state ? 
-        <Card style={{margin:'auto' ,width:'20vw', height:'20vh', zIndex:10, background:'inherit', boxShadow:'0 0 1rem 0 rgba(0, 0, 0, .2)'}}>
+        <Card style={{marginLeft:'40vw', marginTop:'20vh' ,width:'20vw', height:'20vh', zIndex:10, backgroundColor:'#8f94fb', boxShadow:'0 0 1rem 0 rgba(0, 0, 0, .8)', position:'absolute'}}>
           <Card.Body style={{display:'flex', flexDirection:'column', alignItems:'center'}}>
             <h2 className='mb-4'>Confirm Deletion</h2>
             <span>Are you sure you wish to delete this document?</span>
